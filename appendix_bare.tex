@@ -1,0 +1,147 @@
+\section*{Appendix A: Notation}
+\begin{enumerate}
+\item To avoid dealing with both Hermitian and anti-Hermitian matrices in Eq.(\ref{eq:dirac_bad}), it is convenient to redefine $i \tilde{L}_j \equiv L_j$ and $\tilde{\alpha}_j \equiv i \alpha_j$. Eq.(\ref{eq:dirac_bad}) becomes:
+\begin{equation}
+D = \sum_j \tilde{\alpha}_j \otimes [\tilde{L}_j, \cdot ] + \sum_k \tau_k \otimes \{H_k, \cdot \}
+\end{equation}
+and all the matrices are Hermitian.
+\item Commutators and anti-commutators are represented in matrix form as:
+$$[A, \cdot ] = A \otimes I - I \otimes A^T$$
+$$\{A, \cdot \} = A \otimes I + I \otimes A^T.$$
+As a shorthand, the following notation will be used:
+$$[A, \cdot ]_{\epsilon} \equiv A \otimes I + \epsilon \ I \otimes A^T.$$
+\end{enumerate}
+The final form of Eq.(\ref{eq:dirac_bad}) is then:
+\begin{equation}\label{eq:dirac}
+D = \sum_{i \in I} \omega_i \otimes [ M_i, \cdot ]_{\epsilon_i}
+\end{equation}
+for Hermitian matrices $M_i$, with $\omega_i \in \{ \tilde{\alpha}_j \} \cup \{ \tau_k \}$, and $\epsilon_i = \pm 1$ depending on $\omega_i$ being a $\tau$ matrix or a $\tilde{\alpha}$ matrix.
+
+\section*{Appendix B: Matrix derivatives} \label{sec:matder}
+Let $A \in M_n(\mathbb{C})$ and $f(A)$ be a complex valued function of $A$. The derivative of $f$ with respect to $A$ is defined in components as the $n \times n$ matrix:
+\begin{equation}
+\left(\frac{\partial f}{\partial A}\right)_{lm} \equiv \frac{\partial f}{\partial A_{lm}}.
+\end{equation}
+The two special cases of interest here are:
+\begin{equation}
+\frac{\partial \Tr A}{\partial A} = I
+\end{equation}
+\begin{equation}
+\frac{\partial \Tr AB}{\partial A} = B^T.
+\end{equation}
+
+\section*{Appendix C}
+The explicit form of $\mathcal{B}_k(i,i,k), \ \mathcal{B}_k(i,k,i)$ and $\mathcal{B}_k(k,k,k)$ is given.
+\begin{align}
+\mathcal{B}_k(i,i,k) &= \Tr(\omega_k \omega_i \omega_i \omega_k)A(k, i, i, k)^T = CA(k,i,i,k)^T \\ \notag
+\mathcal{B}_k(i,k,i) &= \Tr(\omega_k \omega_i \omega_k \omega_i)A(k, i, k, i)^T \\ \notag
+\mathcal{B}_k(k,k,k) &= \Tr(\omega_k \omega_k \omega_k \omega_k)A(k, k, k, k)^T = CA(k,k,k,k)^T
+\end{align}
+where $C$ is the dimension of the Clifford module and the $A$ matrices are:
+\begin{align}
+A(k,i,i,k) = \ &n [1+\dagger] M_i^2 M_k + \notag \\
+&2\epsilon_k I \Tr M_i^2 M_k + \notag \\
+&2\epsilon_i \Tr M_i [1 + \dagger] M_i M_k + \notag \\
+&4\epsilon_k \epsilon_i M_i \Tr M_i M_k + \notag \\
+&2\epsilon_k M_i^2 \Tr M_k + \notag \\
+&2M_k \Tr M_i^2
+\end{align}
+\begin{align}
+A(k,i,k,i) = \ &2n M_i M_k M_i + \notag \\
+&2\epsilon_k I \Tr M_i^2 M_k + \notag \\
+&2\epsilon_i \Tr M_i [1+\dagger] M_i M_k + \notag \\
+&4\epsilon_k \epsilon_i M_i \Tr M_i M_k + \notag \\
+&2\epsilon_k M_i^2 \Tr M_k + \notag \\
+&2M_k \Tr M_i^2
+\end{align}
+\begin{align}
+A(k,k,k,k) = \ &2n M_k^3 + 2\epsilon_k I \Tr M_k^3 + \notag \\
+&6 M_k \Tr M_k^2 + 6\epsilon_k M_k^2 \Tr M_k.
+\end{align}
+
+
+
+
+\section*{Appendix C}
+Using the following notation:
+\begin{equation}
+D = \sum_{i \in I} \omega_i \otimes [M_i, \cdot]_{\epsilon_i} 
+\end{equation}
+\begin{equation}
+\delta D = \omega_x \otimes [m_x, \cdot]_{\epsilon_x} 
+\end{equation}
+\begin{equation}
+[M,\cdot]_{\epsilon} = \sum_{q=0}^1 \epsilon^{1-q} M^q \otimes (M^T)^{1-q}
+\end{equation}
+where $x \in I$ is a fixed index and $m_x$ is a random Hermitian matrix, Eq.(\ref{eq:diff2}) becomes:
+\begin{multline}
+(D')^p - D^p = \sum_{s=1}^p \ \sum_{i_1,..,i_{p-s} \in I} \  \sum_{\substack{k_1, .., k_{p-s} = 0 \\ \sum k_j \le s}}^s \ \sum_{\substack{l_1, .., l_{p-s} = 0 \\ l_j \le k_j}}^s \ \sum_{l'=0}^{s-\sum k_j} \ \sum_{q_1, .., q_{p-s} = 0}^1 \cdot \Bigg[ \\[1em]
+\cdot \Bigg[ \binom{k_1}{l_1} \ldots \binom{k_{p-s}}{l_{p-s}} \binom{s-\sum k_j}{l'} (\epsilon_x)^{s-\sum l_j - l'}(\epsilon_{i_1})^{1-q_1} \ldots (\epsilon_{i_{p-s}})^{1-q_{p-s}} \ \ \cdot \\[1em]
+\cdot \ \ (\omega_x)^{k_1} \omega_{i_1} \ldots (\omega_x)^{k_{p-s}} \omega_{i_{p-s}} (\omega_x)^{s-\sum k_j} \ \ \otimes \\[1em]
+(m_x)^{l_1} (M_{i_1})^{q_1} \ldots (m_x)^{l_{p-s}} (M_{i_{p-s}})^{q_{p-s}} (m_x)^{l'} \ \ \otimes \\[1em]
+(m_x^T)^{k_1-l_1} (M_{i_1}^T)^{1-q_1} \ldots (m_x^T)^{k_{p-s}-l_{p-s}} (M_{i_{p-s}}^T)^{1-q_{p-s}} (m_x^T)^{s-\sum k_j - l'} \Bigg].
+\end{multline}
+
+
+\section*{Appendix D}
+Suppose $m_x$ has the following form:
+\begin{equation}
+(m_x)_{ij} = z \delta_{iI} \delta_{jJ} + z^* \delta_{iJ} \delta_{jI}
+\end{equation}
+where $z$ is a complex number, $\delta_{ij}$ is the Kronecker delta, and $I, J$ are the indices of the only non-vanishing entries: $(m_x)_{IJ} = (m_x)_{JI}^* = z \neq 0$. \newline
+If $n$ is the dimension of the matrix algebra and $C$ is the dimension of the Clifford module, then for $p=2$:
+\begin{enumerate}
+\item if $I \neq J$:
+\begin{equation}
+\Tr [(D')^2 - D^2] = 4 \ C \ n \ [ \ 2 \Real ( z(M_x)_{JI} ) + |z|^2 \ ]
+\end{equation}
+\item if $I = J$:
+\begin{equation}
+\Tr [(D')^2 - D^2] = 8 \ C \ \Real(z) \ [ \ n \ ( \ \Real (M_x)_{II}  + \Real(z) \ ) \ + \ \epsilon_x(\Tr M_x + \Real(z))  ]
+\end{equation}
+\end{enumerate}
+While for $p=4$:\newline
+\begin{enumerate}
+\item if $I \neq J$:
+\begin{align}
+\Tr D^3 \delta D &= \sum_{\substack{i_1 < i_3 \\ i_2}} 2 \Real \Tr (A[i_1, i_2, i_3, x]) + \sum_{i} \Real \Tr (A[i, x, i, x]) \notag \\
+A[i_1, i_2, i_3, x] &= \Tr ( \omega_{i_1} \omega_{i_2} \omega_{i_3} \omega_x ) \Big[ \notag \\
+n &[1 + \epsilon_{i_1} \epsilon_{i_2} \epsilon_{i_3} \epsilon_{x} *] [ (M_{i_1}M_{i_2}M_{i_3})_{JI} z + (M_{i_1}M_{i_2}M_{i_3})_{IJ} z^*] + \notag \\
+\sum_{\{\alpha, \beta, \gamma\} }  & [\epsilon_{\gamma} + \epsilon_{\alpha} \epsilon_{\beta} \epsilon_x * ] [(M_{\alpha} M_{\beta})_{JI} z + (M_{\alpha} M_{\beta})_{IJ} z^* ] + \notag \\
+& [\epsilon_{\alpha} \epsilon_{\beta}  + \epsilon_{\gamma} \epsilon_x] 2\Real ((M_{\gamma})_{JI} z)\Tr M_{\alpha} M_{\beta}) \Big] \\
+\text{with} \quad &\{\alpha, \beta, \gamma\} = \{ i_1, i_2, i_3 \}, \{i_1, i_3, i_2 \}, \{ i_2, i_3, i_1 \} \notag \\
+\notag \\
+\Tr D^2 (\delta D)^2 &= \sum_{i} C \Big[ |z|^2 [ 2n((M_i^2)_{II} + (M_i^2)_{JJ}) + \notag \\
+&4 \epsilon_i \Tr M_i ( (M_i)_{II} + (M_i)_{JJ} ) + \notag \\
+&4 \Tr M_i^2 ] + 16 \epsilon_i \epsilon_x \Real ((M_i)_{JI} z)^2 \Big] \\
+\notag \\
+\Tr D \delta D D \delta D &= \sum_i \Tr ( \omega_{i} \omega_{x} \omega_{i} \omega_x ) \Big[ 4n ( \Real((M_i)_{JI}^2 z^2) + \notag \\
+&|z|^2 \Real ( (M_i)_{II}(M_i)_{JJ}) + \notag \\
+&|z|^2 [ 4 \epsilon_i \Tr M_i ((M_i)_{II} + (M_i)_{JJ} ) + 4 \Tr M_i^2 ] + \notag \\
+&16 \epsilon_i \epsilon_x \Real ( (M_i)_{JI} z)^2 \Big] \\
+\notag \\
+\Tr D (\delta D)^3 &= 4 C (n+6) |z|^2 \Real( (M_x)_{JI} z ) \\
+\notag \\
+\Tr (\delta D)^4 &= 4 C (n+6) |z|^4
+\end{align}
+\item if $I = J$:
+\begin{align}
+\Tr D^3 \delta D &= \sum_{\substack{i_1 < i_3 \\ i_2}} 2 \Real \Tr (A[i_1, i_2, i_3, x]) + \sum_{i} \Real \Tr (A[i, x, i, x]) \notag \\
+A[i_1, i_2, i_3, x] &= \Tr ( \omega_{i_1} \omega_{i_2} \omega_{i_3} \omega_x ) 2 \Real z \Big[ \notag \\
+n &[1 + \epsilon_{i_1} \epsilon_{i_2} \epsilon_{i_3} \epsilon_{x} *](M_{i_1}M_{i_2}M_{i_3})_{II} + \notag \\
+&[\epsilon_x + \epsilon_{i_1} \epsilon_{i_2} \epsilon_{i_3} *]\Tr M_{i_1}M_{i_2}M_{i_3} + \notag \\
+\sum_{\{\alpha, \beta, \gamma\} }  & [\epsilon_{\gamma} + \epsilon_{\alpha} \epsilon_{\beta} \epsilon_x * ] (M_{\alpha} M_{\beta})_{II} \Tr M_{\gamma} + \notag \\
+& [\epsilon_{\alpha} \epsilon_{\beta}  + \epsilon_{\gamma} \epsilon_x] (M_{\gamma})_{II} \Tr M_{\alpha} M_{\beta}) \Big] \\
+\text{with} \quad &\{\alpha, \beta, \gamma\} = \{ i_1, i_2, i_3 \}, \{i_1, i_3, i_2 \}, \{ i_2, i_3, i_1 \} \notag \\
+\notag \\
+\Tr D^2 (\delta D)^2 &= \sum_{i} C (\Real z)^2 \Big[ 2n(M_i)_{II} + 4 \epsilon_x (M_i^2)_{II} + \notag \\
+&4 \epsilon_i (M_i)_{II} \Tr M_i  + 4 \epsilon_i \epsilon_x (M_i)_{II}^2 + 2 \Tr M_i^2 \Big] \\
+\notag \\
+\Tr D \delta D D \delta D &= \sum_i \Tr ( \omega_{i} \omega_{x} \omega_{i} \omega_x ) (\Real z)^2 \Big[ 2n(M_i)_{II} + 4 \epsilon_x (M_i^2)_{II} + \notag \\
+&4 \epsilon_i (M_i)_{II} \Tr M_i  + 4 \epsilon_i \epsilon_x (M_i)_{II}^2 + 2 \Tr M_i^2 \Big] \\
+\notag \\
+\Tr D (\delta D)^3 &= 16 C (\Real z)^3 ( (n+3\epsilon_x + 3)(M_x)_{II} + \epsilon_x \Tr M_x ) \\
+\notag \\
+\Tr (\delta D)^4 &= 32 C (n+4 \epsilon_x +3) (\Real z)^4
+\end{align}
+\end{enumerate}

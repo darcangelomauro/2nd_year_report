@@ -1,0 +1,172 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath,amscd}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{caption}
+\usepackage{floatpag}
+\usepackage[english]{babel}
+\linespread{1}
+
+\newtheorem{theo}{Theorem}
+\newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}[theo]{Corollary}
+\newtheorem{defn}{Definition}
+\newtheorem{con}{Conjecture}
+
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Real}{Re}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+% Title
+\title{$1^{st}$ year PhD report}
+\author{Mauro D'Arcangelo \\ Supervisor: Prof. J. W. Barrett}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+
+% Table of contents
+\tableofcontents
+
+% Sections
+\section{Introduction}\label{intro}
+\input{intro_bare}
+
+\section{Results}\label{results}
+\input{HMC_bare}
+\input{sven_bare}
+\input{IKKT_bare}
+
+\section{Future directions}\label{future}
+\input{spvar_bare}
+\input{matter_bare}
+\input{RHMC_bare}
+
+\input{appendix_bare}
+
+\begin{thebibliography}{99} % alternatively use BibTeX
+
+\bibitem{barrettLOR}
+J.~W. Barrett,
+``Lorentzian version of the noncommutative geometry of the standard model of particle physics'',
+{\it J. Math.\ Phys.\ \bf 48}, 012303 (2007).
+
+\bibitem{barrett}
+J.~W. Barrett,
+``Matrix geometries and fuzzy spaces as finite spectral triples'',
+{\it J. Math.\ Phys.\ \bf 56}, 082301 (2015).
+
+\bibitem{barrettglaser}
+J.~W. Barrett and L. Glaser,
+``Monte Carlo simulations of random non-commutative geometries'',
+{\it J. Phys.\ A\ \bf 49}, 24, 245001 (2016).
+
+\bibitem{betan}
+M. Betancourt,
+``A Conceptual Introduction to Hamiltonian Monte Carlo'',
+(arXiv:1701.02434v1, 2017).
+
+\bibitem{bhat}
+U. Bhat, M. Shrestha and L. H\'ebert-Dufresne,
+``Exotic phase transitions of k-cores in clustered networks'',
+{\it Phys.\ Rev. \ E \ \bf 95}, 012314 (2017).
+
+\bibitem{bittner}
+E. Bittner and W. Janke,
+``Parallel-tempering cluster algorithm for computer simulations of critical phenomena'',
+{\it Phys.\ Rev. \ E \ \bf 84}, 036701 (2011).
+
+\bibitem{connesSAP}
+A.~H. Chamseddine and A. Connes,
+``The spectral action principle'',
+{\it Commun.\ Math.\ Phys. \ \bf 186}, 731--750 (1997).
+
+\bibitem{connesNEUT}
+A.~H. Chamseddine, A. Connes and M. Marcolli,
+``Gravity and the standard model with neutrino mixing'',
+{\it Adv.\ Theor. \ Math.\ Phys. \ \bf 11}, 991--1089 (2007).
+
+\bibitem{pol}
+P.  Colomer-de-Sim\'on and M. Bogu\~n\'a,
+``Double Percolation Phase Transition in Clustered Complex Networks'',
+{\it Phys.\ Rev. \ X \ \bf 4}, 041020 (2014).
+
+\bibitem{connesGRAVMAT}
+A.~Connes,
+``Gravity coupled with matter and the foundation of noncommutative geometry'',
+{\it Commun.\ Math.\ Phys. \ \bf 183}, 1, 155--176 (1996).
+
+\bibitem{connesRECON}
+A.~Connes,
+``On the spectral characterization of manifolds'',
+{\it J. Noncommut.\ Geom. \ \bf 7}, 1--82 (2013).
+
+\bibitem{masterthesis}
+M. D'Arcangelo,
+{\it Random Non-Commutative Geometries\/}
+(Unpublished master's thesis, 2017).
+
+\bibitem{duane}
+S. Duane, A.~D. Kennedy, B.~J. Pendleton and D. Roweth,
+``Hybrid Monte Carlo'',
+{\it Phys.\ Lett. \ B \ \bf 195}, 216--222 (1987).
+
+\bibitem{earl}
+D.~J. Earl and M.~W. Deem,
+``Parallel tempering: Theory, applications, and new perspectives'',
+{\it Phys.\ Chem. \ Chem. \ Phys. \bf 7}, 3910--3916 (2005).
+
+\bibitem{erdos}
+P. Erd\H os and A. R\'enyi,
+``On the Evolution of Random Graphs'',
+{\it Publication of the Mathematical Institute of the Hungarian Academy of Sciences\/}
+17--61 (1960).
+
+\bibitem{glaser}
+L. Glaser,
+``Scaling behaviour in random non-commutative geometries'',
+{\it J. Phys.\ A\ \bf 50}, 27, 275201 (2017).
+
+\bibitem{hastings}
+W.~K. Hastings,
+``Monte  Carlo sampling  methods using  Markov chains  and their applications'',
+{\it Biometrika\ \bf 57}, 1, 97--109 (1970).
+
+\bibitem{montvay}
+I.~Montvay and G. Munster,
+{\it Quantum Fields on a Lattice\/}
+(Cambridge University Press, 2009).
+
+\bibitem{neal}
+R.~M. Neal,
+{\it Handbook of Markov Chain Monte Carlo\/}
+(Chapman \& Hall / CRC Press, 2011).
+
+\bibitem{suijlekom}
+W.~D. Suijlekom,
+{\it Noncommutative Geometry and Particle Physics\/}
+(Springer, 2014).
+
+\bibitem{swendsen}
+R.~H. Swendsen and J.~-S. Wang,
+``Replica Monte Carlo Simulation of Spin-Glasses'',
+{\it Phys.\ Rev. \ Lett. \ \bf 57}, 1, 2607 (1986).
+
+\bibitem{zukovic}
+M. \v Zukovi\v c and G. Kalagov,
+``Magnetic quasi-long-range ordering in nematic systems due to competition between higher-order couplings'',
+{\it Phys.\ Rev. \ E \ \bf 97}, 052101 (2018).
+
+
+\end{thebibliography}
+
+\end{document}

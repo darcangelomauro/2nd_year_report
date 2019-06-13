@@ -115,5 +115,28 @@ Putting together Eq.(\ref{eq:alldifferent}), Eq.(\ref{eq:someequal}) and Eq.(\re
 \end{align}
 The explicit form of $\mathcal{B}_k(i,i,k), \ \mathcal{B}_k(i,k,i)$ and $\mathcal{B}_k(k,k,k)$ is given in Appendix C.
 
-\subsubsection{Testing HMC}
+\subsubsection{Testing HMC against exact results}
+Although not many analytical results are available for the matrix integrals considered here, there is a non-trivial observable whose expectation value is known exactly for any geometry and any action polinomial in $D$. Computing this observable therefore provides a good test for the numerical implementation.\newline
+Consider the following vanishing integral:
+\begin{equation} \label{eq:vanint}
+0 = \int \frac{\partial}{\partial D_{ij}} \left( D_{ij} e^{-S[D]} \right) d D
+\end{equation}
+where $D_{ij}$ is one of the non-zero components of the Dirac operator and $S[D]$ is in general sum of terms like $g_p \Tr D^p$. An explicit calculation of the partial derivative on these traces gives:
+\begin{align}
+\frac{\partial}{\partial D_{ij}} \Tr D^p = \frac{\partial}{\partial D_{ij}} \sum_{a_1, \cdots, a_p} D_{a_1 a_2} \cdots D_{a_p a_1} = p \ m_{ij} \sum_{a_2, \cdots, a_p} &D_{j a_2} \cdots D_{a_p i} \\ \notag
+&= p \ m_{ij} (D^{p-1})_{ji}
+\end{align}
+where $m_{ij}$ counts the multiplicity of the component $D_{ij}$ in the Dirac operator (recall that the Dirac operator is heavily constrained and not all the non-vanishing components are independent degrees of freedom). The integral (\ref{eq:vanint}) then becomes:
+\begin{equation}
+0 = \int \frac{\partial}{\partial D_{ij}} \left( D_{ij} e^{-S[D]} \right) d D = \int \left( 1 - \sum_p g_p \ p \ m_{ij} D_{ij} (D^{p-1})_{ji} \right) e^{-S[D]}d D 
+\end{equation}
+dividing by the partition function then gives:
+\begin{equation}
+1 =\frac{1}{\int e^{-S[D]}} \int \left( \sum_p g_p \ p \ m_{ij} D_{ij} (D^{p-1})_{ji} \right) e^{-S[D]} d D
+\end{equation}
+and finally summing over all $i, j$ corresponding to independent degrees of freedom:
+\begin{equation}
+\#\text{d.o.f.}(D) = \frac{1}{\int e^{-S[D]}} \int \left( \sum_p g_p \ p \Tr D^p \right) e^{-S[D]} d D = \left\langle \sum_p g_p \ p \  \Tr D^p \right\rangle
+\end{equation}
+
 

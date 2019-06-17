@@ -121,22 +121,23 @@ Consider the following vanishing integral:
 \begin{equation} \label{eq:vanint}
 0 = \int \frac{\partial}{\partial D_{ij}} \left( D_{ij} e^{-S[D]} \right) d D
 \end{equation}
-where $D_{ij}$ is one of the non-zero components of the Dirac operator and $S[D]$ is in general sum of terms like $g_p \Tr D^p$. An explicit calculation of the partial derivative on these traces gives:
-\begin{align}
-\frac{\partial}{\partial D_{ij}} \Tr D^p = \frac{\partial}{\partial D_{ij}} \sum_{a_1, \cdots, a_p} D_{a_1 a_2} \cdots D_{a_p a_1} = p \ m_{ij} \sum_{a_2, \cdots, a_p} &D_{j a_2} \cdots D_{a_p i} \\ \notag
-&= p \ m_{ij} (D^{p-1})_{ji}
-\end{align}
-where $m_{ij}$ counts the multiplicity of the component $D_{ij}$ in the Dirac operator (recall that the Dirac operator is heavily constrained and not all the non-vanishing components are independent degrees of freedom). The integral (\ref{eq:vanint}) then becomes:
+where $D_{ij}$ is one of the independent degrees of freedom of the Dirac operator and $S[D]$ is in general sum of terms like $g_p \Tr D^p$.\newline
+An explicit calculation of the right-hand side of Eq.(\ref{eq:vanint}) gives:
 \begin{equation}
-0 = \int \frac{\partial}{\partial D_{ij}} \left( D_{ij} e^{-S[D]} \right) d D = \int \left( 1 - \sum_p g_p \ p \ m_{ij} D_{ij} (D^{p-1})_{ji} \right) e^{-S[D]}d D 
+0 = \int \left( 1 - \sum_p g_p D_{ij} \frac{\partial}{\partial D_{ij}} \Tr D^p \right) e^{-S[D]}d D
 \end{equation}
-dividing by the partition function then gives:
+dividing by the partition function and rearranging the terms:
 \begin{equation}
-1 =\frac{1}{\int e^{-S[D]}} \int \left( \sum_p g_p \ p \ m_{ij} D_{ij} (D^{p-1})_{ji} \right) e^{-S[D]} d D
+1 =\frac{1}{\int e^{-S[D]}} \int \left( \sum_p g_p D_{ij} \frac{\partial}{\partial D_{ij}} \Tr D^p \right) e^{-S[D]}d D
 \end{equation}
 and finally summing over all $i, j$ corresponding to independent degrees of freedom:
 \begin{equation}
 \#\text{d.o.f.}(D) = \frac{1}{\int e^{-S[D]}} \int \left( \sum_p g_p \ p \Tr D^p \right) e^{-S[D]} d D = \left\langle \sum_p g_p \ p \  \Tr D^p \right\rangle
 \end{equation}
+where the following identity, a proof of which is given in Appendix D, was used:
+\begin{equation}
+\sum_{ij} D_{ij} \frac{\partial}{\partial D_{ij}} \Tr D^p = p \Tr D^p.
+\end{equation}
+To estimate the number of degrees of freedom recall that in the decomposition (\ref{eq:dirac}) the $M_i$ matrices are all Hermitian, therefore {\#}d.o.f.$(D) = n^2m$ where $n$ is the dimension and $m$ the total number of $M_i$ matrices.
 
 

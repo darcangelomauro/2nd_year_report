@@ -21,6 +21,10 @@
 
 \DeclareMathOperator{\Tr}{Tr}
 \DeclareMathOperator{\Real}{Re}
+\newcommand{\eit}{e^{i \theta}}
+\newcommand{\eits}{e^{2i \theta}}
+\newcommand{\emit}{e^{-i \theta}}
+\newcommand{\emits}{e^{-2i \theta}}
 
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 
@@ -36,19 +40,25 @@
 
 % Table of contents
 \tableofcontents
+\newpage
 
 % Sections
 \section{Introduction}\label{intro}
 \input{intro_bare}
+\newpage
 
 \section{Results}\label{results}
 \input{HMC_bare}
+\newpage
 \input{YMtype_bare}
+\newpage
+\input{sven_bare}
+\newpage
 
-\section{Future directions}\label{future}
-\input{spvar_bare}
-\input{matter_bare}
-\input{RHMC_bare}
+%\section{Future directions}\label{future}
+%\input{spvar_bare}
+%\input{matter_bare}
+%\input{RHMC_bare}
 
 \input{appendix_bare}
 

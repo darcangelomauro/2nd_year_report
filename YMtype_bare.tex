@@ -19,15 +19,11 @@ where again sum on repeated indices is implied. Diagonal matrices satisfy Eq.(\r
 In this sense fuzzy spheres are classical solutions of (\ref{eq:ymaction}).
 
 \subsubsection{Type $(0,3)$ geometry as a Yang-Mills matrix model}
-Consider now a type $(0,3)$ fuzzy Dirac operator:
-\begin{equation}
-D_{(0,3)} = I \otimes \{M_0,\cdot \} + \sum_i \sigma_i \otimes [M_i,\cdot ]
-\end{equation}
-where $\sigma_i$ are the three Hermitian Pauli matrices, and $M_0, M_i$ are Hermitian matrices. Two simplifications can be made that still yield a valid Dirac operator of $(0,3)$ type, although not the most general one: the term ${I \otimes \{M_0,\cdot \}}$ will be ignored, as well as the commutator substructure. In other words, the following Dirac operator will be considered:
+Consider the following Dirac operator:
 \begin{equation}
 D = \sum_i \sigma_i \otimes M_i
 \end{equation}
-for Hermitian matrices $M_i$.\newline
+where $\sigma_i, \ i=1,2,3$ are the Pauli matrices and $M_i$ are Hermitian matrices. Note that no commutators or anti-commutators appear in the Dirac operator, meaning that the bimodule structure of the algebra on itself is ignored and only the left (or right) action is taken into account. The Dirac operator is nevertheless an example of type $(0,3)$ geometry.\newline
 Consider then the usual action for $D$ (with an additional cubic term and some convenient numerical factors):
 \begin{equation}
 S[D] = \frac{1}{4} \Tr D^4 + \frac{1}{3}g_3 \Tr D^3 + \frac{1}{4}g_2 \Tr D^2.
@@ -51,7 +47,7 @@ which is formally equivalent to replacing $M_i$ with $[M_i, \cdot ]$ in each for
 \begin{equation}
 [M_i, M_j] = i \epsilon_{ijk} M_k \ \implies \ [[M_i, \cdot ], [M_j, \cdot ]] = [[M_i, M_j], \cdot ] = i \epsilon_{ijk} [M_k, \cdot ]
 \end{equation}
-however, what spoils the solutions is the extra quartic term that is not present in the Yang-Mills model.
+however, it is not clear the role of the extra quartic term in the action, which cannot be interpreted as imposing irreducibility of the classical solution anymore.
 
 
 

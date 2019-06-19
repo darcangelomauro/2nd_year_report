@@ -1,5 +1,5 @@
 \subsection{Improvements in the numerical algorithm}
-The evaluation of integrals such as (\ref{eq:expval}) requires a way to sample the most relevant configurations (the \textit{typical set}) out of the entirety of parameter space. The simplest algorithm based on Markov chains for doing so is Metropolis-Hastings \cite{hastings}. Two crucial shortcomings of Metropolis are a rather slow exploration of the typical set based on a random walk in parameter space, and the large correlation between adjacent samples. A more sophisticated approach is Hybrid Monte Carlo, or HMC XXXX(duane): originally developed for lattice QCD computations, it allows a faster and more uniform exploration of the typical set by transposing the problem of sampling from a distribution to Hamiltonian evolution in a fictitious phase space.\newline
+The evaluation of integrals such as (\ref{eq:expval}) requires a way to sample the most relevant configurations (the \textit{typical set}) out of the entirety of parameter space. The simplest algorithm based on Markov chains for doing so is Metropolis-Hastings \cite{hastings}. Two crucial shortcomings of Metropolis are a rather slow exploration of the typical set based on a random walk in parameter space, and the large correlation between adjacent samples. A more sophisticated approach is Hybrid Monte Carlo, or HMC \cite{duane}: originally developed for lattice QCD computations, it allows a faster and more uniform exploration of the typical set by transposing the problem of sampling from a distribution to Hamiltonian evolution in a fictitious phase space.\newline
 After a brief explanation of the idea behind HMC, the adaptation to the fuzzy space path integral is discussed and the results from numerical simulations are presented with a comparison between HMC and Metropolis.
 
 \subsubsection{Hybrid Monte Carlo}
@@ -11,7 +11,7 @@ The first step of Hybrid Monte Carlo is to enlarge parameter space by introducin
 \frac{dp_i}{dt} &= -\frac{\partial{H}}{\partial{q_i}} \label{eq:dpdt}
 \end{align}
 where $t$ denotes a fictitious time that will be referred to as Monte Carlo time. This specifies a transition $(\mathbf{q}(0), \mathbf{p}(0)) \rightarrow (\mathbf{q}(t), \mathbf{p}(t))$ from an initial configuration to a new one. The new configuration is then accepted with probability $\text{min}[1, \exp (H(t)-H(0))]$. \newline
-Note that Hamiltonian dynamics preserves the value of the energy of the system, therefore $H(t) = H(0)$ and $\text{min}[1, \exp (H(t)-H(0))] = 1$. However, numerical integration of Hamilton's equations is a non-trivial matter that introduces errors, therefore $H(t) \neq H(0)$ in general. The standard choice of numerical integrator in HMC is the so-called \textit{leapfrog} integrator. For details see Appendix ZZZZ.
+Note that Hamiltonian dynamics preserves the value of the energy of the system, therefore $H(t) = H(0)$ and $\text{min}[1, \exp (H(t)-H(0))] = 1$. However, numerical integration of Hamilton's equations is a non-trivial matter that introduces errors, therefore $H(t) \neq H(0)$ in general. The standard choice of numerical integrator in HMC is the so-called \textit{leapfrog} integrator \cite{neal} \cite{betan}.
 
 \subsubsection{Adapting HMC to fuzzy spaces}
 In the matrix integral considered here, the dynamical variables are the $n \times n$ Hermitian matrices $M_i$, to which a corresponding set of Hermitian matrices $P_i$ is added. The Hamiltonian is chosen to be simply:
@@ -131,13 +131,60 @@ dividing by the partition function and rearranging the terms:
 1 =\frac{1}{\int e^{-S[D]}} \int \left( \sum_p g_p D_{ij} \frac{\partial}{\partial D_{ij}} \Tr D^p \right) e^{-S[D]}d D
 \end{equation}
 and finally summing over all $i, j$ corresponding to independent degrees of freedom:
-\begin{equation}
+\begin{equation}\label{eq:dofs}
 \#\text{d.o.f.}(D) = \frac{1}{\int e^{-S[D]}} \int \left( \sum_p g_p \ p \Tr D^p \right) e^{-S[D]} d D = \left\langle \sum_p g_p \ p \  \Tr D^p \right\rangle
 \end{equation}
 where the following identity, a proof of which is given in Appendix D, was used:
 \begin{equation}
 \sum_{ij} D_{ij} \frac{\partial}{\partial D_{ij}} \Tr D^p = p \Tr D^p.
 \end{equation}
-To estimate the number of degrees of freedom recall that in the decomposition (\ref{eq:dirac}) the $M_i$ matrices are all Hermitian, therefore {\#}d.o.f.$(D) = n^2m$ where $n$ is the dimension and $m$ the total number of $M_i$ matrices.
+To estimate the number of degrees of freedom recall that in the decomposition (\ref{eq:dirac}) the $M_i$ matrices are all Hermitian, therefore {\#}d.o.f.$(D) = n^2m$ where $n$ is the dimension and $m$ the total number of $M_i$ matrices.\newline
+Numerical tests of HMC and Metropolis agree with the prediction (\ref{eq:dofs}). As an example, a test on the $(0,3)$ Dirac operator is reported in Fig.(\ref{fig:dofs}).
+\begin{figure}[hp]
+\centering
+\textbf{$\text{\# dofs} = 2 g_2 \langle S_2 \rangle + 4\langle S_4 \rangle$ test: comparison Metropolis/HMC}
+\includegraphics[width=1\linewidth]{fig/dofsp0q3.pdf}
+\caption{Convergence of the expectation value of the observable $2 g_2 \Tr D^2 + 4 \Tr D^4 $ to the number of degrees of freedom of the Dirac operator for geometry $(0,3)$. The three sets correspond to matrix size $n = 16 \times 16$, $32 \times 32$ and $64 \times 64$. }
+\label{fig:dofs}
+\end{figure}
+
+\subsubsection{Comparing the speed of HMC and Metropolis}
+The samples produced by a Markov chain are correlated with each other. In general HMC generates less correlated samples if compared to Metropolis, resulting in higher quality data for a given computational cost.\newline
+When computing a specific observable $O$, the efficiency of an algorithm in producing uncorrelated samples can be quantified by the \textit{time-displaced autocorrelation}:
+\begin{equation}
+\chi(t) = \int dt' O(t')O(t'+t) - \langle O \rangle^2
+\end{equation}
+where $O(t)$ represents the value of the observable at Monte Carlo time $t$. The autocorrelation function is expected to fall off exponentially:
+\begin{equation}
+\chi(t) \sim e^{-\frac{t}{\tau}}
+\end{equation}
+and $\tau$ is known as the autocorrelation time. Two values of the observable taken at $\sim 2\tau$ distance from each other are considered independent.\newline
+The autocorrelation time tends to be dramatically larger near second-order phase transitions. For this reason the $(2,0)$ geometry at the phase transition was chosen to test HMC against Metropolis. The order parameter for the phase transition is:
+\begin{equation}
+F = \frac{(\Tr H_1)^2 + (\Tr H_2)^2}{n( \Tr H_1^2 + \Tr H_2^2)}
+\end{equation}
+where $H_i$ are the two free Hermitian matrices of the model. The plot of the time-displaced autocorrelation and the exponential fit for HMC and Metropolis are reported in Fig.(\ref{fig:autoc}). The exponential fit gives an autocorrelation time of $\sim 250$ sweeps for Metropolis and $\sim 25$ sweeps for HMC, meaning that in this example Metropolis needs to run 10 times longer than HMC for collecting the same amount of independent samples.
+\begin{figure}[hp]
+\centering
+\textbf{Autocorrelation of order parameter $(2,0)$ test: comparison Metropolis/HMC}
+\includegraphics[width=1\linewidth]{fig/autocorrp2q0.pdf}
+\caption{Autocorrelation $\chi (t)$ (normalized by $\chi(0)$) of the $(2,0)$ phase transition order parameter $F$. The coupling constant $g_2 = 2.725$ was chosen to be at the phase transition. The exponential fit gives an autocorrelation time of $\sim 250$ sweeps for Metropolis and $\sim 25$ sweeps for HMC.}
+\label{fig:autoc}
+\end{figure}
+\newline
+Of course Metropolis might be more than 10 times faster than HMC to collect a single sample, therefore the raw speed of the algorithm needs to be taken into account as well. In order to test this, the speed of HMC and Metropolis in generating 100 samples for the $(0,3)$ geometry was recorder for matrix dimension $16 \times 16$, $32 \times 32$ and $64 \times 64$. The results are reported in Tab.(\ref{tab:speed}).\newline
+For small matrix size the two algorithms are comparable in speed, while for larger matrices HMC greatly outperforms Metropolis. Linearly fitting the data in logaritmic scale allows to estimate how the two algorithms scale with the matrix dimension, giving a computational cost of $O(n^{4.6})$ and $O(n^{2.6})$ for Metropolis and HMC respectively.
+\begin{table}[hp]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\begin{tabular}[c]{@{}l@{}}Matrix\\ dimension\end{tabular} & \begin{tabular}[c]{@{}l@{}}time\\ HMC (sec)\end{tabular} & \begin{tabular}[c]{@{}l@{}}time\\ Metropolis (sec)\end{tabular} \\ \hline
+16 & 23 & 17 \\ \hline
+32 & 100 & 428 \\ \hline
+64 & 1612 & 21218 \\ \hline
+\end{tabular}
+\caption{Time for 100 sweeps of HMC and Metropolis for geometry $(0,3)$. Fitting of the data gives a computational cost of $O(n^{4.6})$ and $O(n^{2.6})$ for Metropolis and HMC respectively.}
+\label{tab:speed}
+\end{table}
 
 

@@ -1,0 +1,22 @@
+\subsection{Including matter fields}
+The matrix model analyzed so far should ideally describe a non-commutative analogue of a space-time manifold in a finite theory of quantum gravity. A number of results are being collected in support of this claim, the latest being spectral estimators for dimension and volume \cite{barrdruceglaser} and still unpublished results on the Lie algebraic structures that emerge among the matrices of certain models.\newline
+A rather unsatisfactory aspect of the model is that no matter fields have entered the picture yet. A priori there is no guarantee that the model without matter should even be of physical relevance, and the presence of matter could produce dramatic deviations from the behaviour observed so far.\newline
+The proposal for the introduction of matter fields follows the spirit of Sakharov's work on induced gravity \cite{sak}, and represents the final step in a logical progression that started in the early days of non-commutative geometry applied to the Standard Model. In \cite{connesGRAVMAT} Connes showed that there is no need to introduce gauge fields explicitly in the spectral action, as the bosonic sector of the Standard Model emerges naturally from inner fluctuations of the Dirac operator. Schematically, the spectral action Connes considered had the following form:
+\begin{equation}
+S = \Tr \chi \left( \frac{D}{\Lambda} \right) + \langle \Psi, D \Psi \rangle
+\end{equation}
+where the first term would produce the Einstein-Hilbert action plus the bosonic and Higgs sector, and the second would produce the couplings between gauge fields and matter. Later on, in \cite{barrettIND} it was observed that Sakharov's mechanism could take care of the whole bosonic sector (gauge fields plus gravity), and a more minimalistic spectral action was proposed:
+\begin{equation}\label{eq:ferac}
+S = \langle \Psi, D \Psi \rangle.
+\end{equation}
+At this point space-time is still a commutative classical manifold $M$. By analogy, the natural way to introduce matter in the context of fuzzy spaces is to replace the manifold with a fuzzy space while keeping the same action (\ref{eq:ferac}). Grassmann integration over the fermions yields a determinant, therefore a convergency term in the action of the type $\Tr D^{2p}$ is needed as well. The simplest choice would then be:
+\begin{equation}
+S = g_2 \Tr D^2 - \frac{1}{2} \Tr \log D^2
+\end{equation}
+where the determinant has been expressed as a trace log.\newline
+The inclusion of fermions entails both a theoretical and a numerical aspect:
+\begin{enumerate}
+\item on the theoretical side, one might carry out explicitly the calculation of the action and identify the gravity, gauge and matter sectors of the theory;
+\item on the numerical side, a Monte Carlo simulation with a fermion determinant can be perfomed in various ways, the state of the art being an extension of HMC called Rational Hybrid Monte Carlo \cite{rhmc}.
+\end{enumerate}
+

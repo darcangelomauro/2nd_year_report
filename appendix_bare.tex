@@ -35,9 +35,9 @@ The two special cases of interest here are:
 \section*{Appendix C}
 The explicit form of $\mathcal{B}_k(i,i,k), \ \mathcal{B}_k(i,k,i)$ and $\mathcal{B}_k(k,k,k)$ is given.
 \begin{align}
-\mathcal{B}_k(i,i,k) &= \Tr(\omega_k \omega_i \omega_i \omega_k)A(k, i, i, k)^T = CA(k,i,i,k)^T \\ \notag
-\mathcal{B}_k(i,k,i) &= \Tr(\omega_k \omega_i \omega_k \omega_i)A(k, i, k, i)^T \\ \notag
-\mathcal{B}_k(k,k,k) &= \Tr(\omega_k \omega_k \omega_k \omega_k)A(k, k, k, k)^T = CA(k,k,k,k)^T
+\mathcal{B}_k(i,i,k) &= \Tr(\omega_k \omega_i \omega_i \omega_k)A(k, i, i, k)^T = CA(k,i,i,k)^T \notag \\ 
+\mathcal{B}_k(i,k,i) &= \Tr(\omega_k \omega_i \omega_k \omega_i)A(k, i, k, i)^T \notag \\
+\mathcal{B}_k(k,k,k) &= \Tr(\omega_k \omega_k \omega_k \omega_k)A(k, k, k, k)^T = CA(k,k,k,k)^T \notag
 \end{align}
 where $C$ is the dimension of the Clifford module and the $A$ matrices are:
 \begin{align}
@@ -73,8 +73,8 @@ The following identity will be proven:
 \end{equation}
 An explicit calculation gives:
 \begin{align}
-&\sum_{ij} D_{ij} \frac{\partial}{\partial D_{ij}} \Tr D^p = \sum_{ij} D_{ij} \frac{\partial}{\partial D_{ij}} \sum_{a_1 \cdots a_p} D_{a_1 a_2} \cdots D_{a_p a_1} = \\ \notag
-&\sum_{ij} D_{ij} \sum_{a_1 \cdots a_p} \left( c^{ij}_{a_1 a_2} D_{a_2 a_3} \cdots D_{a_p a_1} + \cdots + D_{a_1 a_2} \cdots D_{a_{p-1} a_p} c^{ij}_{a_p a_1} \right) = \\ \notag
-&\sum_{a_1 \cdots a_p} \left( \left(\sum_{ij} c^{ij}_{a_1 a_2} D_{ij}\right) D_{a_2 a_3} \cdots D_{a_p a_1} + \cdots + D_{a_1 a_2} \cdots D_{a_{p-1} a_p} \left( \sum_{ij} c^{ij}_{a_p a_1} D_{ij} \right) \right) = \\ \notag
-&p \sum_{a_1 \cdots a_p} D_{a_1 a_2} \cdots D_{a_p a_1} = p \Tr D^p 
+&\sum_{ij} D_{ij} \frac{\partial}{\partial D_{ij}} \Tr D^p = \sum_{ij} D_{ij} \frac{\partial}{\partial D_{ij}} \sum_{a_1 \cdots a_p} D_{a_1 a_2} \cdots D_{a_p a_1} = \notag \\ 
+&= \sum_{ij} D_{ij} \sum_{a_1 \cdots a_p} \left( c^{ij}_{a_1 a_2} D_{a_2 a_3} \cdots D_{a_p a_1} + \cdots + D_{a_1 a_2} \cdots D_{a_{p-1} a_p} c^{ij}_{a_p a_1} \right) = \notag \\
+&= \sum_{a_1 \cdots a_p} \left( \left(\sum_{ij} c^{ij}_{a_1 a_2} D_{ij}\right) D_{a_2 a_3} \cdots D_{a_p a_1} + \cdots + D_{a_1 a_2} \cdots D_{a_{p-1} a_p} \left( \sum_{ij} c^{ij}_{a_p a_1} D_{ij} \right) \right) = \notag \\
+&= p \sum_{a_1 \cdots a_p} D_{a_1 a_2} \cdots D_{a_p a_1} = p \Tr D^p 
 \end{align}

@@ -11,7 +11,7 @@ The first step of Hybrid Monte Carlo is to enlarge parameter space by introducin
 \frac{dp_i}{dt} &= -\frac{\partial{H}}{\partial{q_i}} \label{eq:dpdt}
 \end{align}
 where $t$ denotes a fictitious time that will be referred to as Monte Carlo time. This specifies a transition $(\mathbf{q}(0), \mathbf{p}(0)) \rightarrow (\mathbf{q}(t), \mathbf{p}(t))$ from an initial configuration to a new one. The new configuration is then accepted with probability $\text{min}[1, \exp (H(t)-H(0))]$. \newline
-Note that Hamiltonian dynamics preserves the value of the energy of the system, therefore $H(t) = H(0)$ and $\text{min}[1, \exp (H(t)-H(0))] = 1$. However, numerical integration of Hamilton's equations is a non-trivial matter that introduces errors, therefore $H(t) \neq H(0)$ in general. The standard choice of numerical integrator in HMC is the so-called \textit{leapfrog} integrator \cite{neal} \cite{betan}.
+Note that Hamiltonian dynamics preserves the value of the energy of the system, therefore $H(t) = H(0)$ and $\text{min}[1, \exp (H(t)-H(0))] = 1$. However, numerical integration of Hamilton's equations is a non-trivial matter that introduces errors, therefore $H(t) \neq H(0)$ in general. The standard choice of numerical integrator in HMC is the so-called \textit{leapfrog} integrator \cite{betan} \cite{neal}.
 
 \subsubsection{Adapting HMC to fuzzy spaces}
 In the matrix integral considered here, the dynamical variables are the $n \times n$ Hermitian matrices $M_i$, to which a corresponding set of Hermitian matrices $P_i$ is added. The Hamiltonian is chosen to be simply:
@@ -24,7 +24,7 @@ Schematically, the algorithm goes as follows:
 \item integrate Hamilton's equations for a certain time $t$;
 \item accept the new configuration with probability $\text{min}[1, \exp (H(t)-H(0))]$.
 \end{enumerate}
-The non-trivial step in the leapfrog integrator is the evaluation of the force term in Eq.(YYYY), which requires to take derivatives such as:
+The non-trivial step in the leapfrog integrator is the evaluation of Eq.(\ref{eq:dpdt}), which requires to take derivatives such as:
 \begin{equation}
 \frac{\partial S[M_i]}{\partial M_k}
 \end{equation}

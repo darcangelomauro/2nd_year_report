@@ -1,4 +1,4 @@
-\subsection{Improvements in the numerical algorithm}
+\subsection{Improvements in the numerical algorithm}\label{numimprov}
 The evaluation of integrals such as (\ref{eq:expval}) requires a way to sample the most relevant configurations (the \textit{typical set}) out of the entirety of parameter space. The simplest algorithm based on Markov chains for doing so is Metropolis-Hastings \cite{hastings}. Two crucial shortcomings of Metropolis are a rather slow exploration of the typical set based on a random walk in parameter space, and the large correlation between adjacent samples. A more sophisticated approach is Hybrid Monte Carlo, or HMC \cite{duane}: originally developed for lattice QCD computations, it allows a faster and more uniform exploration of the typical set by transposing the problem of sampling from a distribution to Hamiltonian evolution in a fictitious phase space.\newline
 After a brief explanation of the idea behind HMC, the adaptation to the fuzzy space path integral is discussed and the results from numerical simulations are presented with a comparison between HMC and Metropolis.
 
